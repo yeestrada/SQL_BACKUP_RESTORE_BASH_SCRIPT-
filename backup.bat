@@ -62,6 +62,7 @@ MKDIR %BACKUPPATH%\%COMPANY%_BACKUP_%DATESTAMP%
 
 REM GOTO End
 REM ------------------CREATING NEW BACKUP--------------------
+:CREATE 
 
 (for %%a in (%list%) do ( 
 	echo CREATING BACKUP OF %%a DATABASE...
@@ -72,7 +73,7 @@ REM ------------------CREATING NEW BACKUP--------------------
 REM GOTO End
 REM ------------------UPLOAD TO DRIVE----------------------------------
 REM ------------------3D PARTY SOFTWARE gdrive.exe IS NEEDED IN THE SAME FOLDER OF BACKUP.BAT FILE, PREVIOUS CONFIGURATION OF GDRIVE.EXE IS NEEDED TO CONNECT TO GOOGLE DRIVE
-
+:DRIVE
 REM MOVING TO BACKUP FILE FOLDER TO USE gdrive.exe
 cd %~dp0
 
@@ -106,7 +107,7 @@ REM rd /s /q %BACKUPPATH%
 
 GOTO End
 REM ------------------RESTORING LATEST BACKUP--------------------
-
+:RESTORE 
 REM RESTORE FROM LOCAL BAK FILES
 (for %%a in (%list%) do ( 
 	echo RESTORING %%a DATABASE...
